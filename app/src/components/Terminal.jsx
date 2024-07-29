@@ -17,7 +17,7 @@ const Terminal = () => {
 
   const fileContent = `Azure database info:\n 
   Username: admin\n
-  Password: password`;
+  Password: ohmygoddo\n`;
 
   useEffect(() => {
     if (terminalRef.current) {

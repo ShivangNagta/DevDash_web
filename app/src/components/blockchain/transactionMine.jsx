@@ -12,10 +12,13 @@ const TransactionMine = ({ timer, setTimer, goToNextStep }) => {
   const [timeLeft, setTimeLeft] = useState(60000000);
   const [inputPubKey, setInputPubKey] = useState('');
   const [initialBlockNonce, setInitialBlockNonce] = useState(''); // State to store the block nonce
+  const [currentTime, setTime] = useState( Math.floor(Date.now() / 1000));
+
 
   // Read cookies
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('pvtKey'));
+    
     if (savedData) {
       setPvtKey(savedData);
     }
@@ -107,6 +110,8 @@ const TransactionMine = ({ timer, setTimer, goToNextStep }) => {
     { goToNextStep };
   }
 
+  
+
   return (
     <AnimatedPage>
       <div className="flex flex-col justify-center items-center h-screen w-screen p-4 bg-gray-900 text-white">
@@ -179,7 +184,7 @@ const TransactionMine = ({ timer, setTimer, goToNextStep }) => {
         {timeLeft < 0 ? (
           <p className='text-white bg-opacity-30 bg-white px-3 py-3 rounded'></p>
         ) : (
-          <p className='text-white font-mono text-lg bg-opacity-30 bg-white px-3 py-2 rounded'>{Math.floor(Date.now() / 1000)}</p>
+          <p className='text-white font-mono text-lg bg-opacity-30 bg-white px-3 py-2 rounded'>{currentTime}</p>
         )}
       </div>
       </div>}

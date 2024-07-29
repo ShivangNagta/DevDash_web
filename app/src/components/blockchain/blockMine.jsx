@@ -305,8 +305,9 @@ const BlockMine = ({ timer, setTimer, goToNextStep, entryNumber}) => {
         toNum = parseInt(toNum);
 
         toNum *= 1729;
-        toNum = toNum % 1000000000;
+        // toNum = toNum % 1000000000;
         toNum = toNum.toString().split('');
+        toNum = toNum.slice(-9);
         let pubKey = [];
         for (let i = 0; i < toNum.length; i++) {
             if (parseInt(toNum[i]) % 2 !== 0) {
@@ -428,7 +429,7 @@ const BlockMine = ({ timer, setTimer, goToNextStep, entryNumber}) => {
                     <div className="p-8 text-center w-full max-w-2xl bg-green-700 border-2 border-green-800 rounded-lg shadow-lg">
                         <h3 className='text-white italic text-3xl font-bold mb-2'>Details Correct...</h3>
                         <p className='text-white italic text-xl mb-4'>Waiting for confirmation</p>
-                        <p className='text-white text-4xl font-bold'>{percentage}%</p>
+                        <p className='text-white text-4xl font-bold'>{percentage.toFixed(2)}%</p>
                     </div>
                 )}
             </div>
