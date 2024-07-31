@@ -117,7 +117,7 @@ const Intro2 = () => {
 
   const startNextLevel = () => {
     document.body.style.overflow = 'auto';
-    navigate(`/Level-3?entryNumber=${entryNumber}`);
+    navigate(`/LevelSabkeNiklenge?entryNumber=${entryNumber}`);
   };
 
   return (

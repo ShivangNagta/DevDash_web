@@ -187,7 +187,7 @@ const Rain = () => {
 
   const startNextLevel = () => {
     document.body.style.overflow = "auto";
-    navigate(`/Level-2?entryNumber=${entryNumber}`);
+    navigate(`/LevelKuchLogoKeNiklenge?entryNumber=${entryNumber}`);
   };
 
   return (

@@ -12,7 +12,7 @@ const MySQLTerminal = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    if (username === "admin" && password === "password") {
+    if (username === "admin" && password === "ohmygoddo") {
       setAuthenticated(true);
     } else {
       alert("Invalid username or password");

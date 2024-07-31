@@ -46,9 +46,9 @@ function App() {
                     <Route path="/Level-1(1)" element={<Mandelbrot />} />
                     <Route path="/Level-1(2)" element={<MandelbrotFractal />} />
                     <Route path="/intro1" element={<Rain />} />
-                    <Route path="/Level-2" element={<Window />} />
+                    <Route path="/LevelKuchLogoKeNiklenge" element={<Window />} />
                     <Route path="/intro2" element={<Intro2 />} />
-                    <Route path="/Level-3" element={<Noncense />} />
+                    <Route path="/LevelSabkeNiklenge" element={<Noncense />} />
                     <Route path="/resultPage" element={<Result />} />
                 </Routes>
             </div>
