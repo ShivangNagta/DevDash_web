@@ -117,7 +117,7 @@ const TransactionMine = ({ timer, setTimer, goToNextStep }) => {
       <div className="flex flex-col justify-center items-center h-screen w-screen p-4 bg-gray-900 text-white">
         {transaction !== "Successful" && (
           <div className="w-full max-w-lg">
-            <p className="text-center mb-4">{pubKey}</p>
+{/*             <p className="text-center mb-4">{pubKey}</p> */}
             <div className="p-5 grid text-xl justify-items-center bg-gray-800 border-2 rounded-lg">
               <div>
                 <div className='flex justify-between'>
