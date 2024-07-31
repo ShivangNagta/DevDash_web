@@ -227,7 +227,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         {
           id: 1,
           message:
-            "Hello there! Welcome to CyberTrace. I'm here to help you with your investogation.",
+            "Hello there! Welcome to CyberTrace. I'm here to help you with your investigation.",
           trigger: 2,
         },
         {
@@ -248,7 +248,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         },
         {
           id: 5,
-          message: "And remember, the hacking took place on 15th August 2024, between 2200 to 2300 hours GMT.",
+          message: "And remember, the hacking took place on 15th August 2024, between 2200 and 2300 hours GMT.",
           trigger: "choice-msg",
         },
         {
@@ -461,7 +461,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         },
         {
           id: 'ask-nonce',
-          message: "First off, do you remember your previous transaction's block nonce",
+          message: "First off, do you remember your previous transaction's block nonce?",
           trigger: 'ask-nonce-options',
         },
         {
@@ -669,7 +669,7 @@ const CommandTable = () => {
   
   const {credAccessed, setCredAccessed} = useWindowContext();
   const commands = [
-    { command: "1. ssh <username>@<host> -p <port> => <password>", function: " : to files access" },
+    { command: "1. ssh <username>@<host> -p <port> => <password>", function: " : to gain files access" },
     // { command: "   ssh admin@localhost -p 1234 => bankEuro", function: "" },
     { command: "2. ls", function: " : list files" },
     { command: "3. ls -a", function: " : list all files (including hidden)" },

@@ -44,7 +44,7 @@ const Mandelbrot = () => {
 
     const exampleCommand = 'move grid1[0,0] grid2[1,0]';
 
-    const [timer, setTimer] = useState(900);
+    const [timer, setTimer] = useState(600);
 
 
     
@@ -77,7 +77,7 @@ const Mandelbrot = () => {
             if (isCorrect || timer <= 0) {
                 setGameCompleted(true);
                 console.log(isCorrect ? 'Game completed successfully!' : 'Game over. Time ran out!');
-                const timeTaken = 900 - parseInt(timer); // Calculate time taken to complete the level
+                const timeTaken = 600 - parseInt(timer); // Calculate time taken to complete the level
                 const formData = {
                     entryNumber: entryNumber,
                     timeTaken: timeTaken
