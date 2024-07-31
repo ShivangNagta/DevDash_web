@@ -381,8 +381,8 @@ const BlockMine = ({ timer, setTimer, goToNextStep, entryNumber}) => {
                     <div className="p-8 grid text-xl justify-items-center w-full max-w-2xl bg-gray-800 border-2 rounded-lg shadow-lg">
                         <div className="w-full">
                             <h2 className='text-center text-4xl font-bold text-white pb-6'>Mine Block</h2>
-                            <p className='text-xs text-gray-300 mb-2'>{finalBlockNonce}</p>
-                            <p className='text-sm text-gray-300 mb-4'>{pubKey}</p>
+{/*                             <p className='text-xs text-gray-300 mb-2'>{finalBlockNonce}</p>
+                            <p className='text-sm text-gray-300 mb-4'>{pubKey}</p> */}
                             <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-4">
                                 <div className='flex flex-col w-full'>
                                     <label className="mb-1">Block Nonce</label>
