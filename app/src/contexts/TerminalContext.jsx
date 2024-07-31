@@ -12,7 +12,7 @@ export const WindowProvider = ({ children }) => {
   const [mysqlHistory, setMysqlHistory] = useState([]);
   const [authenticated, setAuthenticated] = useState(false);
   const [url, setUrl] = useState("");
-  const [currentContent, setCurrentContent] = useState("Welcome to the Browser! Enter a URL to get started.");
+  const [currentContent, setCurrentContent] = useState("Welcome to Cybertrace. Talk to the chatbot in the bottom right to get started.");
   const [credAccessed, setCredAccessed] = useState(false);
 
   return (

@@ -57,10 +57,10 @@ const Terminal = () => {
 
     switch (command) {
       case 'ls':
-        return sshVerified ? 'No files found' : 'Please verify SSH first by running the ssh command.';
+        return sshVerified ? 'Files found.\n filename: azurecreds' : 'Please verify SSH first by running the ssh command.';
       case 'ls -a':
-        return sshVerified ? 'Hidden files found:\n azureCreds' : 'Please verify SSH first by running the ssh command.';
-      case 'cat azureCreds':
+        return sshVerified ? 'Hidden files found:\n type oh my goddo in terminal' : 'Please verify SSH first by running the ssh command.';
+      case 'cat azurecreds':
         if (sshVerified) {
           setNotepadContent(fileContent);
           setIsNotepadOpen(true);

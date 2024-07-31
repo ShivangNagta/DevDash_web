@@ -38,6 +38,8 @@ const Browser = () => {
           ))}
         </tbody>
       </table>
+      <h2 className="text-xl font-bold mb-4">You have credentials now. Use this in terminal next, refer to Chatbot.</h2>
+
       </div>
       
     );
@@ -46,7 +48,8 @@ const Browser = () => {
   const urlMappings = {
     "https://www.google.com": "sundar pichai moment",
     "https://www.eurobank.eu/files": eurobankSSHCred,
-    "https://www.eurobank.eu": "ain't nothin around here",
+    "https://www.eurobank.eu" : "Welcome to Euro Bank",
+    "https://www.eurobank.eu/" : "Welcome to Euro Bank",
     "https://www.ohmygoddo.omg": { type: "image", src: ohMyGoddo },
   };
 
@@ -71,7 +74,6 @@ const Browser = () => {
 
     if (trimmedUrl === "https://www.eurobank.eu/files"){
       setCredAccessed(true);
-      console.log('heklloo')
     }
 
     let output;
@@ -105,7 +107,7 @@ const Browser = () => {
           value={url}
           onChange={handleChange}
           className="bg-gray-800 text-white flex-grow px-2 py-1 rounded-md"
-          placeholder="eurobank.eu/"
+          placeholder="eurobank.eu"
           autoFocus
         />
         <button

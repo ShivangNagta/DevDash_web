@@ -226,29 +226,32 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
       return [
         {
           id: 1,
-          message:
-            "Hello there! Welcome to CyberTrace. I'm here to help you with your investigation.",
+          message:"You have to name the hacker to complete this level. Steps to find the hacker's name:",
           trigger: 2,
         },
         {
           id: 2,
-          message:
-            "We have three tools in our arsenal: a minimalist text-based browser, a terminal, and Azure cloud service.",
+          message: "1. Use browser to find the ssh credentials to be used in terminal.",
           trigger: 3,
         },
         {
           id: 3,
-          message:"Our final goal is to access the company's Azure database to find IP of the hacker. You have to name the hacker to move to the next level. Let's get started!",
+          message: "2. Use terminal to open file containing Azure credentials.",
           trigger: 4,
         },
         {
           id: 4,
-          message: "The company's url is eurobank.eu. It should help you get started. Good luck!",
-          trigger: 5
+          message: "3. Use Azure to access the company's database to find the hacker's IP.",
+          trigger: 5,
         },
         {
           id: 5,
-          message: "And remember, the hacking took place on 15th August 2024, between 2200 and 2300 hours GMT.",
+          message: "Company's url: eurobank.eu",
+          trigger: 6
+        },
+        {
+          id: 6,
+          message: "Hacking Date: 15/08/2024;  Hacking Time: 2200-2300 hrs GMT.",
           trigger: "choice-msg",
         },
         {
@@ -265,7 +268,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
             {
               value: "hacker",
               label: "Name the hacker",
-              trigger: "hacker-input",
+              trigger: "hacker-input-msg",
             },
           ],
         },
@@ -273,33 +276,21 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
           id: "browser-help",
           message:
             "Here you need to access bank's files to get ssh credentials, try manipulating url to get access to files.",
-          trigger: "browser-help-extra-msg",
-        },
-        {
-          id: "browser-help-extra-msg",
-          message: "Think you got it?",
-          trigger: "browser-help-extra-choice",
-        },
-        {
-          id: "browser-help-extra-choice",
-          options: [
-            { value: "Yes", label: "Yes", trigger: "browser-help-extra-no" },
-            { value: "No", label: "No", trigger: "browser-help-extra" },
-          ],
-        },
-        {
-          id: "browser-help-extra-no",
-          message: "Great! Let's move on.",
-          trigger: "choice-msg",
+          trigger: "browser-help-extra",
         },
         {
           id: "browser-help-extra",
-          message: "Try adding /files to the end of the url to access the company's files.",
+          message: "Add /files to the end of the url to access the company's files.",
           trigger: "choice-msg",
         },
         {
           id: "terminal-help",
           message: "Here you need to infilterate the company's ssh-protected server to get files conatining its Azure credentials.",
+          trigger: "terminal-help-commands-msg",
+        },
+        {
+          id: "terminal-help-commands-msg",
+          message: "Here are the several commands you can use: (press enter in your keyboard to srun the command)",
           trigger: "terminal-help-commands-table",
         },
         {
@@ -310,6 +301,11 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         {
           id: "azure-help",
           message: "The company's database is stored in Azure. You need to access it to find the hacker's IP.",
+          trigger: "azure-help-date",
+        },
+        {
+          id: "azure-help-date",
+          message: "And remember, the hacking took place on 15th August 2024, between 2200 and 2300 hours GMT.",
           trigger: "azure-commands-msg",
         },
         {
@@ -323,10 +319,15 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
           trigger: "choice-msg",
         },
         {
+          id: "hacker-input-msg",
+          message: "Type the name of the hacker(enter random name if you don't know yet)",
+          trigger: "hacker-input",
+        },
+        {
           id: "hacker-input",
           user: true,
           trigger: (inputValue) => {
-            if (inputValue.value.toLowerCase() === "heidi") {
+            if (inputValue.value.toLowerCase() === "grace") {
               return "congo-msg";
             } else {
               return "wrong-ans";
@@ -669,16 +670,24 @@ const CommandTable = () => {
   
   const {credAccessed, setCredAccessed} = useWindowContext();
   const commands = [
-    { command: "1. ssh <username>@<host> -p <port> => <password>", function: " : to gain files access" },
+    // { command: "1. ssh username@host -p port => password", function: " : to gain files access" },
     // { command: "   ssh admin@localhost -p 1234 => bankEuro", function: "" },
-    { command: "2. ls", function: " : list files" },
-    { command: "3. ls -a", function: " : list all files (including hidden)" },
-    { command: "4. clear", function: " : clear terminal" },
-    { command: "5. cat <filename>", function: " : to open file" }
+    { command: "1. ls", function: " : list files" },
+    // { command: "3. ls -a", function: " : list all files (including hidden)" },
+    // { command: "3. clear", function: " : clear terminal" },
+    { command: "2. cat filename", function: " : to open file" }
   ];
 
   return (
     <div className="table-responsive" style={{ overflowX: "auto" }}>
+      <table className="table text-nowrap">
+        <thead>
+      { credAccessed ? <tr> 
+          <tr>Copy this to terminal to access the system:</tr>
+          <tr>ssh admin@localhost -p 1234 =&gt; bankEuro</tr> 
+          </tr> : <tr> <td> You haven't accessed SSH creds yet! </td></tr> }
+        </thead>
+      </table>
       <table className="table text-nowrap">
         <thead>
           <tr>
@@ -687,7 +696,7 @@ const CommandTable = () => {
           </tr>
         </thead>
         <tbody>
-        { credAccessed ? <tr> <td>ssh admin@localhost -p 1234 =&gt; bankEuro </td></tr> : <tr> <td> You haven't accessed SSH creds yet! </td></tr>}
+        
 
           {commands.map((row, index) => (
             
@@ -706,8 +715,8 @@ const CommandTable = () => {
 const AzureCommandTable = () => {
   const commands = [
     { command: "1. show tables", function: " : Show all tables stored in database" },
-    { command: "2. select * from <table-name>", function: " : Select all records from a table" },
-    { command: "3. describe <table-name>", function: " : Describe the table" },
+    { command: "2. select * from table-name", function: " : Show all records from a table" },
+    // { command: "3. describe table-name", function: " : Describe the table" },
   ];
 
   return (
