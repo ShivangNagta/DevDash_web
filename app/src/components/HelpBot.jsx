@@ -285,7 +285,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         },
         {
           id: "terminal-help",
-          message: "Here you need to infilterate the company's ssh-protected server to get files conatining its Azure credentials.",
+          message: "Here you need to infiltrate the company's ssh-protected server to get files containing its Azure credentials.",
           trigger: "terminal-help-commands-msg",
         },
         {
@@ -392,7 +392,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         {
           id: 3,
           message:
-            "1. First, replace the letters by their number equivalent such that 'A/a=1, B/b=2, ...' (capitazed or not doesn't matter).",
+            "1. First, replace the letters by their number equivalent such that 'A/a=1, B/b=2, ...' (capitalized or not doesn't matter).",
           trigger: 4,
         },
         {
@@ -457,7 +457,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         {
           id: 1,
           message:
-            "You are ready to mine your block. To get block nonce, you will require sha256 and caeser cipher encryption methods. Let's start!",
+            "You are ready to mine your block. To get block nonce, you will require sha256 and caesar cipher encryption methods. Let's start!",
           trigger: "ask-nonce",
         },
         {
@@ -546,7 +546,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
             { value: "SHA-256", label: "SHA-256", trigger: "sha256-msg" },
             {
               value: "Caeser Cipher",
-              label: "Caeser Cipher",
+              label: "Caesar Cipher",
               trigger: "caeser-string-msg",
             },
             { value: "extra-help", label: "Help with steps", trigger: "steps-help" },
