@@ -290,7 +290,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         },
         {
           id: "terminal-help-commands-msg",
-          message: "Here are the several commands you can use: (press enter in your keyboard to srun the command)",
+          message: "Here are the several commands you can use: (press enter in your keyboard to run the command)",
           trigger: "terminal-help-commands-table",
         },
         {
@@ -392,7 +392,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         {
           id: 3,
           message:
-            '1. First, replace the letters by their number equivalent such that "A=1, B=2, ...".',
+            "1. First, replace the letters by their number equivalent such that 'A/a=1, B/b=2, ...' (capitazed or not doesn't matter).",
           trigger: 4,
         },
         {
