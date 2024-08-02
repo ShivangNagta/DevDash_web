@@ -21,16 +21,31 @@ const Window = () => {
 
   const [timer, setTimer] = useState(1800);
 
+  // Store time in cookies to avoid refresh loss
   useEffect(() => {
-    if (timer > 0) {
-      const timerInterval = setInterval(() => {
-        setTimer(prevTimer => prevTimer - 1);
-      }, 1000);
-
-      // Cleanup function to clear the interval when the component unmounts or when `timer` changes
-      return () => clearInterval(timerInterval);
+    const storedTimer = JSON.parse(localStorage.getItem('level2Time'));
+    if (storedTimer) {
+        setTimer(storedTimer);
     }
-  }, [timer]);
+}, [])
+
+  
+
+useEffect(() => {
+  if (timer > 0) {
+    const timerInterval = setInterval(() => {
+      setTimer(prevTimer => {
+        const newTimer = prevTimer - 1;
+        localStorage.setItem('level2Time', JSON.stringify(newTimer));
+        return newTimer;
+      });
+    }, 1000);
+
+    // Cleanup function to clear the interval when the component unmounts or when `timer` changes
+    return () => clearInterval(timerInterval);
+  }
+}, [timer]);
+
 
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
 
