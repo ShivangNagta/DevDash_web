@@ -181,7 +181,9 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
           if (response.ok) {
             const data = await response.json();
             console.log("Server response:", data);
-            setTimer(0); // Reset timer after successful update
+            setTimer(1800); // Reset timer after successful update
+            localStorage.setItem('level2Time', JSON.stringify(1800));
+            setLocalTimeTaken(null);
           } else {
             console.error("Failed to update time. Status:", response.status);
             const errorText = await response.text();
