@@ -251,7 +251,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         },
         {
           id: 6,
-          message: "Hacking Date: 15/08/2024;  Hacking Time: 2200-2300 hrs GMT.",
+          message: "Hacking Date: 15/07/2024;  Hacking Time: 2200-2300 hrs GMT.",
           trigger: "choice-msg",
         },
         {
@@ -305,7 +305,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         },
         {
           id: "azure-help-date",
-          message: "And remember, the hacking took place on 15th August 2024, between 2200 and 2300 hours GMT.",
+          message: "And remember, the hacking took place on 15th July 2024, between 2200 and 2300 hours GMT.",
           trigger: "azure-commands-msg",
         },
         {
@@ -327,7 +327,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
           id: "hacker-input",
           user: true,
           trigger: (inputValue) => {
-            if (inputValue.value.toLowerCase() === "grace") {
+            if (inputValue.value.toLowerCase() === "charles") {
               return "congo-msg";
             } else {
               return "wrong-ans";

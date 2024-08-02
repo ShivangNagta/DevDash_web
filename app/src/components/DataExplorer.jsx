@@ -40,8 +40,9 @@ const MySQLTerminal = () => {
             IP: "192.168.1.2",
             Designation: "Senior Analyst",
           },
+          // culprit for 3rd sesh
           {
-            Employee: "Charles White",
+            Employee: "Charles",
             Age: 28,
             IP: "192.168.1.3",
             Designation: "Financial Advisor",
@@ -145,7 +146,7 @@ const MySQLTerminal = () => {
           {
             Event_ID: "003",
             URL: "eurobank.eu",
-            Employee_IP: "192.168.1.3",
+            Employee_IP: "192.168.1.7",
             Event_Date: "2024-07-14",
             Event_Time: "22:00 GMT",
           },
@@ -196,7 +197,7 @@ const MySQLTerminal = () => {
           {
             Event_ID: "010",
             URL: "jpmorgan.com",
-            Employee_IP: "192.168.1.7",
+            Employee_IP: "192.168.1.3",
             Event_Date: "2024-07-15",
             Event_Time: "22:20 GMT",
           },
