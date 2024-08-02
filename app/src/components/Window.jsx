@@ -28,7 +28,6 @@ const Window = () => {
         setTimer(storedTimer);
     }
 }, [])
-
   
 
 useEffect(() => {
