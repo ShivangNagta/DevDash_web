@@ -10,7 +10,7 @@ function Model(props) {
 }
 
 function Login() {
-    const { URL } = useContext(SampleContext)
+    const { URL } = useContext(SampleContext);
 
     const [controlSettings, setControlSettings] = useState({
         speed: 3.0,
@@ -96,7 +96,7 @@ function Login() {
                 <h1 className="text-center text-gray-900 dark:text-white text-4xl sm:text-6xl lg:text-4xl">SoftCom - DevDash</h1>
             </header>
             <div className="w-full h-3/5 relative mt-16 mb-5">
-                <Canvas dpr={[3, 6]} shadows camera={{ fov: 45 }} className="w-full h-full">
+                <Canvas dpr={[3, 6]} shadows camera={{ fov: 45, position: [2, 1, 2] }} className="w-full h-full">
                     <color attach="background" args={["#000000"]} />
                     <OrbitControls
                         enableZoom={false}
