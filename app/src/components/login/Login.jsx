@@ -78,7 +78,7 @@ function Login() {
         console.log("Name:", name);
         console.log("Entry Number:", entryNumber);
 
-        window.location.href = `/LevelKuchLogoKeNiklenge?entryNumber=${entryNumber}`;
+        window.location.href = `/intro1?entryNumber=${entryNumber}`;
     };
 
     const handleAdminSubmit = (e) => {
