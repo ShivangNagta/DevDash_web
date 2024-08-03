@@ -57,8 +57,9 @@ const TransactionMine = ({ timer, setTimer, goToNextStep }) => {
     toNum = parseInt(toNum);
 
     toNum *= 1729;
-    toNum = toNum % 1000000000;
     toNum = toNum.toString().split('');
+    toNum = toNum.slice(-9);
+    // toNum = toNum.toString().split('');
     let pubKey = [];
     for (let i = 0; i < toNum.length; i++) {
       if (parseInt(toNum[i]) % 2 !== 0) {
