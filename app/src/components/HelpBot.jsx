@@ -292,7 +292,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
         },
         {
           id: "terminal-help-commands-msg",
-          message: "Here are the several commands you can use: (press enter in your keyboard to run the command)",
+          message: "Use the given 2 commands after ssh verification:",
           trigger: "terminal-help-commands-table",
         },
         {
@@ -329,7 +329,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
           id: "hacker-input",
           user: true,
           trigger: (inputValue) => {
-            if (inputValue.value.toLowerCase() === "charles") {
+            if (inputValue.value.toLowerCase() === "nalin") {
               return "congo-msg";
             } else {
               return "wrong-ans";
@@ -673,7 +673,6 @@ const CommandTable = () => {
   const {credAccessed, setCredAccessed} = useWindowContext();
   const commands = [
     // { command: "1. ssh username@host -p port => password", function: " : to gain files access" },
-    // { command: "   ssh admin@localhost -p 1234 => bankEuro", function: "" },
     { command: "1. ls", function: " : list files" },
     // { command: "3. ls -a", function: " : list all files (including hidden)" },
     // { command: "3. clear", function: " : clear terminal" },
@@ -685,8 +684,8 @@ const CommandTable = () => {
       <table className="table text-nowrap">
         <thead>
       { credAccessed ? <tr> 
-          <tr>Copy this to terminal to access the system:</tr>
-          <tr>ssh admin@localhost -p 1234 =&gt; bankEuro</tr> 
+          <tr>For ssh verification, copy next line to terminal:</tr> <br />
+          <tr>ssh admin@localhost -p 1234 =&gt; bankEuro</tr> <br /> 
           </tr> : <tr> <td> You haven't accessed SSH creds yet! </td></tr> }
         </thead>
       </table>
@@ -744,48 +743,5 @@ const AzureCommandTable = () => {
 };
 
 
-// const RedirectComponent = ({ navigate, entryNumber, timer, setTimer }) => {
-//   let timeTaken = 0
-//   useEffect(() => {
-//     const updateData = async () => {
-//       try {
-//         timeTaken = 1200 - timer; // Calculate time taken to complete the level
-//         const formData = {
-//           entryNumber: entryNumber,
-//           timeTaken: timeTaken
-//         };
-
-//         const response = await fetch('http://localhost:3000/updateTime', {
-//           method: 'POST',
-//           headers: {
-//             'Content-Type': 'application/json',
-//           },
-//           body: JSON.stringify(formData),
-//         });
-
-//         if (response.ok) {
-//           console.log('Time updated successfully');
-//           setTimer(0); // Update the timer after the fetch request completes successfully
-//         } else {
-//           console.error('Failed to update time');
-//         }
-//       } catch (error) {
-//         console.error('Error updating time:', error);
-//       }
-//     };
-
-//     updateData();
-//   }, [entryNumber, setTimer, timer]);
-
-//   useEffect(() => {
-//     const timerId = setTimeout(() => {
-//       navigate(`/intro2?entryNumber=${entryNumber}`);
-//     }, 2000);
-
-//     return () => clearTimeout(timerId);
-//   }, [navigate, entryNumber]);
-
-//   return <div>Redirecting to the next level....{timeTaken}</div>;
-// };
 
 export default HelpBot;

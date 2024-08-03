@@ -6,8 +6,11 @@ import { SampleContext } from '../../contexts/URLContext';
 
 function Model(props) {
     const { scene } = useGLTF("2.glb"); // Ensure the path is correct
-    return <primitive object={scene} scale={0.015} {...props} />;
+    // Adjust the rotation here (example values: [x, y, z])
+    const initialRotation = [0, -(Math.PI / 2), 0]; // 90 degrees around the x-axis
+    return <primitive object={scene} scale={0.015} rotation={initialRotation} {...props} />;
 }
+
 
 function Login() {
     const { URL } = useContext(SampleContext);

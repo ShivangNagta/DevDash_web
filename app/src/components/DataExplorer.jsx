@@ -48,13 +48,13 @@ const MySQLTerminal = () => {
             Designation: "Financial Advisor",
           },
           {
-            Employee: "Steve Robs",
+            Employee: "Steve Jobs",
             Age: 32,
             IP: "192.168.1.4",
             Designation: "Branch Manager",
           },
           {
-            Employee: "Eve",
+            Employee: "Sarvo",
             Age: 29,
             IP: "192.168.1.5",
             Designation: "Loan Officer",
@@ -67,7 +67,7 @@ const MySQLTerminal = () => {
           },
           // The culprit for 2nd sesh
           {
-            Employee: "Grace",
+            Employee: "Nalin ",
             Age: 27,
             IP: "192.168.1.7",
             Designation: "IT Specialist",
@@ -138,7 +138,7 @@ const MySQLTerminal = () => {
           },
           {
             Event_ID: "002",
-            URL: "eurobank.eu",
+            URL: "jpmorgan.com",
             Employee_IP: "192.168.1.2",
             Event_Date: "2024-07-10",
             Event_Time: "21:45 GMT",
@@ -182,9 +182,9 @@ const MySQLTerminal = () => {
           {
             Event_ID: "008",
             URL: "jpmorgan.com",
-            Employee_IP: "192.168.1.9",
-            Event_Date: "2024-07-12",
-            Event_Time: "21:10 GMT",
+            Employee_IP: "192.168.1.7",
+            Event_Date: "2024-07-15",
+            Event_Time: "22:10 GMT",
           },
           {
             Event_ID: "009",
@@ -199,7 +199,7 @@ const MySQLTerminal = () => {
             URL: "jpmorgan.com",
             Employee_IP: "192.168.1.3",
             Event_Date: "2024-07-15",
-            Event_Time: "22:20 GMT",
+            Event_Time: "21:20 GMT",
           },
         ];
         break;
