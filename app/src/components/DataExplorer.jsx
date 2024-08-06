@@ -67,14 +67,12 @@ const MySQLTerminal = () => {
           },
           // The culprit for 2nd sesh
           {
-            Employee: "Nalin ",
+            Employee: "Stanley",
             Age: 27,
             IP: "192.168.1.7",
             Designation: "IT Specialist",
           },
           {
-            // The culprit for first sesh, 
-            // if you change name here, you need to change the culprit name in HelpBot.jsx as well(id: hacker-input)
             Employee: "Heidi",
             Age: 24,
             IP: "192.168.1.8",
@@ -92,6 +90,8 @@ const MySQLTerminal = () => {
             IP: "192.168.3.1",
             Designation: "Compliance Officer",
           },
+          // The culprit for 5th sesh, 
+          // if you change name here, you need to change the culprit name in HelpBot.jsx as well(id: hacker-input)
           {
             Employee: "Kenny",
             Age: 33,
@@ -179,10 +179,11 @@ const MySQLTerminal = () => {
             Event_Date: "2024-07-14",
             Event_Time: "22:55 GMT",
           },
+          // culprit
           {
             Event_ID: "008",
             URL: "jpmorgan.com",
-            Employee_IP: "192.168.1.7",
+            Employee_IP: "192.168.4.1",
             Event_Date: "2024-07-15",
             Event_Time: "22:10 GMT",
           },
@@ -193,7 +194,6 @@ const MySQLTerminal = () => {
             Event_Date: "2024-07-15",
             Event_Time: "21:30 GMT",
           },
-          // culprit
           {
             Event_ID: "010",
             URL: "jpmorgan.com",
