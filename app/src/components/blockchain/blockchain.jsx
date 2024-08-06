@@ -25,12 +25,12 @@ const Blockchain = ({ timer, setTimer, goToNextStep }) => {
 
   // useEffect to run only once after the initial render
   useEffect(() => {
-    // let savedData = JSON.parse(localStorage.getItem('pvtKey'));
-    // if (!savedData || savedData.trim().length === 0) {
+    let savedData = JSON.parse(localStorage.getItem('pvtKey'));
+    if (!savedData || savedData.trim().length === 0) {
       let generatedPvtKey = genPvtKey(6);
       localStorage.setItem('pvtKey', JSON.stringify(generatedPvtKey));
-    
-    let savedData = JSON.parse(localStorage.getItem('pvtKey'));
+    }
+    savedData = JSON.parse(localStorage.getItem('pvtKey'));
     setPvtKey(savedData);
 
     let savedData2 = JSON.parse(localStorage.getItem('initialTimestamp'));
