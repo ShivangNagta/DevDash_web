@@ -54,7 +54,7 @@ const MySQLTerminal = () => {
             Designation: "Branch Manager",
           },
           {
-            Employee: "Sarvo",
+            Employee: "Trevor",
             Age: 29,
             IP: "192.168.1.5",
             Designation: "Loan Officer",
@@ -93,7 +93,7 @@ const MySQLTerminal = () => {
           // The culprit for 5th sesh, 
           // if you change name here, you need to change the culprit name in HelpBot.jsx as well(id: hacker-input)
           {
-            Employee: "Kenny",
+            Employee: "Jenny",
             Age: 33,
             IP: "192.168.4.1",
             Designation: "Risk Manager",

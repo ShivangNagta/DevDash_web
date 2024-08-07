@@ -329,7 +329,7 @@ const HelpBot = ({ level = 1, entryNumber, timer, setTimer}) => {
           id: "hacker-input",
           user: true,
           trigger: (inputValue) => {
-            if (inputValue.value.toLowerCase() === "kenny") {
+            if (inputValue.value.toLowerCase() === "jenny") {
               return "congo-msg";
             } else {
               return "wrong-ans";
