@@ -97,6 +97,7 @@ function Login() {
         <div className="absolute w-full h-full bg-black text-white flex flex-col justify-center items-center">
             <header className="w-full mt-3 p-4 fixed top-0 z-10">
                 <h1 className="text-center text-gray-900 dark:text-white text-4xl sm:text-6xl lg:text-4xl">SoftCom - DevDash</h1>
+                <h1 className="text-center left-10 translate-x-1 text-gray-700 dark:text-white sm:text-3xl">IIT Ropar</h1>
             </header>
             <div className="w-full h-3/5 relative mt-16 mb-5">
                 <Canvas dpr={[3, 6]} shadows camera={{ fov: 45, position: [2, 1, 2] }} className="w-full h-full">
