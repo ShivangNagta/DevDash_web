@@ -11,7 +11,6 @@ function Model(props) {
     return <primitive object={scene} scale={0.015} rotation={initialRotation} {...props} />;
 }
 
-
 function Login() {
     const { URL } = useContext(SampleContext);
 
@@ -42,10 +41,15 @@ function Login() {
 
         window.addEventListener("resize", handleResize);
         handleResize(); // Initial check
-        document.body.style.overflow = 'hidden';
+        
+        // Allow scrolling but prevent bounce effects on iOS
+        document.body.style.overflow = 'auto';
+        document.body.style.overscrollBehavior = 'none';
 
         return () => {
             window.removeEventListener("resize", handleResize);
+            document.body.style.overflow = '';
+            document.body.style.overscrollBehavior = '';
         };
     }, []);
 
@@ -66,22 +70,25 @@ function Login() {
             time: 0 // You can add other fields as needed
         };
 
-        // Send the form data as a JSON string
-        let result = await fetch(`${URL}/`, {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        });
+        try {
+            // Send the form data as a JSON string
+            let result = await fetch(`${URL}/`, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
 
-        // Handle the response
-        result = await result.json();
-
-        console.log("Name:", name);
-        console.log("Entry Number:", entryNumber);
-
-        window.location.href = `/intro1?entryNumber=${entryNumber}`;
+            // Handle the response
+            result = await result.json();
+            console.log("Name:", name);
+            console.log("Entry Number:", entryNumber);
+            window.location.href = `/intro1?entryNumber=${entryNumber}`;
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            // Handle error appropriately
+        }
     };
 
     const handleAdminSubmit = (e) => {
@@ -94,66 +101,72 @@ function Login() {
     };
 
     return (
-        <div className="absolute w-full h-full bg-black text-white flex flex-col justify-center items-center">
-            <header className="w-full mt-3 p-4 fixed top-0 z-10">
-                <h1 className="text-center text-gray-900 dark:text-white text-4xl sm:text-6xl lg:text-4xl">SoftCom - DevDash</h1>
-                <h1 className="text-center left-10 translate-x-1 text-gray-700 dark:text-white sm:text-3xl">IIT Ropar</h1>
+        <div className="min-h-full bg-black text-white flex flex-col">
+            <header className="w-full p-4">
+                <h1 className="text-center text-gray-900 dark:text-white text-3xl sm:text-4xl lg:text-5xl">SoftCom - DevDash</h1>
+                <h2 className="text-center text-gray-700 dark:text-white text-xl sm:text-2xl">IIT Ropar</h2>
             </header>
-            <div className="w-full h-3/5 relative mt-16 mb-5">
-                <Canvas dpr={[3, 6]} shadows camera={{ fov: 45, position: [2, 1, 2] }} className="w-full h-full">
+            {/* 3D Model Canvas - responsive height */}
+            <div className="w-full h-64 sm:h-64 md:h-80 lg:h-96">
+                <Canvas dpr={[1, 2]} shadows camera={{ fov: 45, position: [2, 1, 2] }} className="w-full h-full">
                     <color attach="background" args={["#000000"]} />
                     <OrbitControls
                         enableZoom={false}
-                        minPolarAngle={Math.PI / 4} // Minimum polar angle
-                        maxPolarAngle={Math.PI / 2} // Maximum polar angle
-                        autoRotate // Enable auto-rotation
-                        autoRotateSpeed={1.0} // Adjust the speed of auto-rotation
+                        minPolarAngle={Math.PI / 4}
+                        maxPolarAngle={Math.PI / 2}
+                        autoRotate
+                        autoRotateSpeed={1.0}
                     />
                     <Stage environment={null}>
                         <Model scale={0.015} />
                     </Stage>
                 </Canvas>
             </div>
-            <form onSubmit={handleSubmit} className="max-w-sm w-3/4 px-4">
-                <div className="mb-4">
-                    <label htmlFor="Name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                    <input
-                        type="text"
-                        id="Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label htmlFor="entryNumber" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Entry Number</label>
-                    <input
-                        type="text"
-                        id="entryNumber"
-                        value={entryNumber}
-                        onChange={(e) => setEntryNumber(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required
-                    />
-                </div>
+            
+            {/* Form container - centered and responsive */}
+            <div className="flex-grow flex flex-col items-center justify-center px-4 py-6">
+                <form onSubmit={handleSubmit} className="w-full max-w-md">
+                    <div className="mb-4">
+                        <label htmlFor="Name" className="block mb-2 text-sm font-medium text-white">Name</label>
+                        <input
+                            type="text"
+                            id="Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="entryNumber" className="block mb-2 text-sm font-medium text-white">Entry Number</label>
+                        <input
+                            type="text"
+                            id="entryNumber"
+                            value={entryNumber}
+                            onChange={(e) => setEntryNumber(e.target.value)}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        className="mb-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                        Submit
+                    </button>
+                </form>
                 <button
-                    type="submit"
-                    className="mb-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    onClick={() => setShowAdminModal(true)}
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full max-w-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-2"
                 >
-                    Submit
+                    Admin Login
                 </button>
-            </form>
-            <button
-                onClick={() => setShowAdminModal(true)}
-                className="mb-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-3/7 max-w-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-                Admin Login
-            </button>
+            </div>
 
+            {/* Admin Modal - fixed color issues and positioning */}
             {showAdminModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-white p-6 rounded-lg">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 z-50">
+                    <div className="bg-white p-6 rounded-lg w-full max-w-md">
                         <h2 className="text-xl font-bold mb-4 text-black">Admin Login</h2>
                         <form onSubmit={handleAdminSubmit}>
                             <input
@@ -161,7 +174,7 @@ function Login() {
                                 value={adminPassword}
                                 onChange={(e) => setAdminPassword(e.target.value)}
                                 placeholder="Enter admin password"
-                                className="mb-4 w-full p-2 border border-gray-300 rounded text-white"
+                                className="mb-4 w-full p-2 border border-gray-300 rounded text-black bg-white"
                             />
                             <div className="flex justify-end">
                                 <button

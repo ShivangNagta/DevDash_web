@@ -20,7 +20,7 @@ const uri = process.env.MONGODB_URI
 
 // Middleware to enable CORS and parse JSON bodies
 app.use(cors({
-    origin: 'https://softcomdevdashalphafrontend.onrender.com', // Allow all origins
+    origin: 'https://softcomdevdashalphafrontend.onrender.com', 
     credentials: true
 }));
 
